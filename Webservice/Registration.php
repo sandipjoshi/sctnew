@@ -11,15 +11,13 @@ $count=mysql_num_rows($result);
 // If result matched $myusername and $mypassword, table row must be 1 row
 if($count==1){
 $return=true;
-echo $return;
+echo json_encode($return);
 echo "Registration Successfully Done";
- return json_encode($return);
-	   
+   
 }
 else{
 		 $return=false;
-		 echo $return;
+		 echo json_encode($return);
 		 echo "Registration Fail, Please Register Your Mobile Number";
-		 return json_encode($return);
-}
+	}
 ?>
