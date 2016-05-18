@@ -14,13 +14,13 @@ if($count==1){
 $string = '0123456789';
        $string_shuffled = str_shuffle($string);
        $otp = substr($string_shuffled, 1, 4);
-	   echo $otp;
-	   return json_encode($otp);
+	   //echo $otp;
+	   echo json_encode($otp);
 	   
 }
 else{
 		 $false=0;
-		 echo $false;
+		 echo json_encode($false);
 		 return json_encode($false);
 }
 ?>
