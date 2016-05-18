@@ -1,7 +1,7 @@
 <?php 
 include"../config/config.php";
-$mobile_no=$_POST['mob_no'];
-$result = mysql_query("SELECT * FROM `Parent` WHERE 	MobileNo='$mobile_no'");
+$studentid=$_GET['get_children'];
+$result = mysql_query("SELECT * FROM `Student` WHERE Parent_id=$studentid");
 //$new_array[] = $row;
 while ($row = mysql_fetch_array($result)) {
     $new_array[] = $row;
