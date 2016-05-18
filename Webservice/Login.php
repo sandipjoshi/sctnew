@@ -12,7 +12,7 @@ $count=mysql_num_rows($result);
 if($count==1){
 
 $true="Parents";
-				echo $true;
+				echo json_encode($true);
 	   
 }
 else{
@@ -25,7 +25,7 @@ $count=mysql_num_rows($result);
 // If result matched $myusername and $mypassword, table row must be 1 row
 if($count==1){
 	$true="Driver";
-				echo $true;
+				echo json_encode($true);
 }
 else{
 	$sql="SELECT * FROM `School` WHERE Contact='$mobile_no'";
@@ -37,13 +37,13 @@ $count=mysql_num_rows($result);
 // If result matched $myusername and $mypassword, table row must be 1 row
 if($count==1){
 	$true="School";
-				echo $true;
+				echo json_encode($true);
 }
 else{
 
 		 $false=0;
-		 echo $false;
-		 return json_encode($false); }
+		 echo json_encode($false);
+	}
 	}
 }
 ?>
