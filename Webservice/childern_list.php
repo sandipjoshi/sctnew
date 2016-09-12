@@ -1,12 +1,14 @@
 <?php 
 include"../config/config.php";
 $mobile_no=$_GET['mob_no'];
-$result = mysql_query("SELECT * FROM `Parent` WHERE 	MobileNo='$mobile_no'");
+$result = mysql_query("SELECT * FROM `Parent` WHERE `MobileNo`='$mobile_no'");
 //$new_array[] = $row;
 while ($row = mysql_fetch_array($result)) {
     $pid = $row['Parent_id'];
 	}
-$result = mysql_query("SELECT * FROM `Student` WHERE     Parent_id='$pid'");
+//echo $pid;
+$new_array=[];
+$result = mysql_query("SELECT * FROM `Student` WHERE `P_number`='$mobile_no'");
 //$new_array[] = $row;
 while ($row = mysql_fetch_array($result)) {
     $new_array[] = $row;

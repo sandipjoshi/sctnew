@@ -1,4 +1,4 @@
-<?php  $mobile_no=$_GET['mob_no'];
+<?php   $mobile_no=$_GET['mob_no'];
 //$mobile_no='9723011190';
 include"../config/config.php";
 $sql="SELECT * FROM `Parent` WHERE      MobileNo='$mobile_no'";
@@ -19,6 +19,24 @@ $string = '0123456789';
     );
 
                                 echo json_encode($true);
+$ch=curl_init();
+$request =""; //initialise the request variable
+$param['user'] = "devkey";
+$param['key'] ="212442b789XX";
+$param['mobile'] = $mobile_no;
+$param['message'] = $otp ." is your SchoolTime Verification Code.";
+$param['senderid'] = "INFOSM";
+$param['accusage'] = "1";
+foreach($param as $key=>$val)
+{
+    $request.= $key."=".urlencode($val);
+    $request.= "&";
+}
+$request = substr($request, 0, strlen($request)-1);
+$url = "http://mysms.silverlightinfosys.com/submitsms.jsp?".$request;
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$curl_scraped_page = curl_exec($ch);
 }
 else{
         $sql="SELECT * FROM `Driver` WHERE      MobileNo='$mobile_no'";
@@ -42,7 +60,24 @@ if($count==1){
     );
 
                                 echo json_encode($true);
-
+$ch=curl_init();
+$request =""; //initialise the request variable
+$param['user'] = "devkey";
+$param['key'] ="212442b789XX";
+$param['mobile'] = $mobile_no;
+$param['message'] = $otp." is your SchoolTime Verification Code.";
+$param['senderid'] = "INFOSM";
+$param['accusage'] = "1";
+foreach($param as $key=>$val)
+{
+    $request.= $key."=".urlencode($val);
+    $request.= "&";
+}
+$request = substr($request, 0, strlen($request)-1);
+$url = "http://mysms.silverlightinfosys.com/submitsms.jsp?".$request;
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$curl_scraped_page = curl_exec($ch);
 }
 else{
   $sql="SELECT * FROM `SchoolAdmin` WHERE ContactNo='$mobile_no'";
@@ -66,7 +101,24 @@ if($count==1){
     );
 
                                 echo json_encode($true);
-
+$ch=curl_init();
+$request =""; //initialise the request variable
+$param['user'] = "devkey";
+$param['key'] ="212442b789XX";
+$param['mobile'] = $mobile_no;
+$param['message'] = $otp." is your SchoolTime Verification Code.";
+$param['senderid'] = "INFOSM";
+$param['accusage'] = "1";
+foreach($param as $key=>$val)
+{
+    $request.= $key."=".urlencode($val);
+    $request.= "&";
+}
+$request = substr($request, 0, strlen($request)-1);
+$url = "http://mysms.silverlightinfosys.com/submitsms.jsp?".$request;
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$curl_scraped_page = curl_exec($ch);
 }
 else{
 
@@ -74,25 +126,4 @@ else{
                  echo json_encode($true);
         }
         }
-}
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => "http://mysms.silverlightinfosys.com/submitsms.jsp?user=devkey&key=212442b789XX&mobile=%20919723011190&message=test%20sms&senderid=INFOSM&accusage=1",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_HTTPHEADER => array(
-    "cache-control: no-cache",
-    "postman-token: 160015e7-efb7-4547-8f79-d37e8da1494f"
-  ),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-   ?>
+} ?>
