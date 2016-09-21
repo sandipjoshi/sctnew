@@ -15,13 +15,19 @@ $string = '0123456789';
            $result1 = mysql_query("SELECT * FROM `Parent` WHERE MobileNo='$mobile_no'");
 //$new_array[] = $row;
 while ($row = mysql_fetch_array($result1)) {
-$name=$row['name'];
-if(empty($name)){
-$return=array('Registered'=>'Yes');
+$name=$row['fname'];
+if(!empty($name)){
+//$return=array('Registered'=>'Yes');
+     $true = array(
+        'Registered' => 'Yes',
+        'Otp' => $otp,
+        'Type' => 'Driver',
+    ); 
+
 }else{
 $return=array('Registered'=>'No');
 }
-    echo json_encode($return);
+    echo json_encode($true);
 }
 }
 else{
